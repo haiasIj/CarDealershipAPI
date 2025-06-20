@@ -1,7 +1,7 @@
 package com.pluralsight.dealership.models;
 
 public class Vehicle {
-    private int vehicle_id; // primary key in DB
+    private int id; // primary key in DB
     private String vin;
     private int year;
     private double price;
@@ -11,13 +11,13 @@ public class Vehicle {
     private int dealership_id; // foreign key
 
 
-    public Vehicle(int vehicle_id, String vin, int year, String make, String model, String color, double price, int dealership_id) {
-        this.vehicle_id = vehicle_id;
+    public Vehicle(int id, String vin, int year, String make, String model, String color, double price, int dealership_id) {
+        this.id = id;
         this.vin = vin;
         this.year = year;
         this.make = make;
-        this.model = model;
         this.color = color;
+        this.model = model;
         this.price = price;
         this.dealership_id = dealership_id;
     }
@@ -27,9 +27,9 @@ public class Vehicle {
     }
 
 
-    public int getVehicle_id() { return vehicle_id; }
+    public int getVehicle_id() { return id; }
 
-    public void setVehicle_id(int vehicleId) { this.vehicle_id = vehicleId; }
+    public void setVehicle_id(int vehicleId) { this.id = vehicleId; }
 
     public String getVin() {
         return vin;
@@ -70,6 +70,6 @@ public class Vehicle {
     @Override
     public String toString() {
         return String.format("ID: %d | VIN: %s | Year: %d | Make: %s | Model: %s | Color: %s | Price: $%.2f | Dealership ID: %d",
-                vehicle_id, vin, year, make, model, color, price, dealership_id);
+                id, vin, year, make, model, color, price, dealership_id);
     }
 }

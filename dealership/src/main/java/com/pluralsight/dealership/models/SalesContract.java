@@ -1,41 +1,28 @@
 package com.pluralsight.dealership.models;
 
 public class SalesContract extends Contract {
-    protected boolean isFinanced;
+    protected String saleDate;
+    private double salePrice;
 
-    public SalesContract(String date, String customerName, Vehicle vehicleSold) {
-        super(date, customerName, vehicleSold);
+    public SalesContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, int id, int vehicleId, String saleDate, double salePrice) {
+        super(contractDate, customerName, customerEmail, vehicleSold, id, vehicleId);
+        this.saleDate = saleDate;
+        this.salePrice = salePrice;
     }
 
-
-    @Override
-    public double getTotalPrice() {
-        double price = getVehicleSold().getPrice();
-        double tax = price * 0.05;
-        double recordingFee = 100;
-        double processingFee = (price < 10000) ? 295.00 : 495.00;
-
-        return price + tax + recordingFee + processingFee;
+    public String getSaleDate() {
+        return saleDate;
     }
 
-    /*@Override
-    public double getMonthlyPayment() {
-        if (!isFinanced) return 0.0;
+    public void setSaleDate(String saleDate) {
+        this.saleDate = saleDate;
+    }
 
-        double totalPrice = getTotalPrice();
-        double interestRate;
-        int loanTerm;
+    public double getSalePrice() {
+        return salePrice;
+    }
 
-        if (getVehicleSold().getPrice() >= 10000) {
-            interestRate = 0.0425;
-            loanTerm = 48;
-        } else {
-            interestRate = 0.0525;
-            loanTerm = 24;
-        }
-
-        double monthlyRate = interestRate / 12.0;
-        return (totalPrice * monthlyRate) / (1- Math.pow(1 + monthlyRate, -loanTerm));
-    }*/
-
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
+    }
 }

@@ -1,30 +1,38 @@
 package com.pluralsight.dealership.models;
 
 public class LeaseContract extends Contract {
+    private String leaseStartDate;
     private String leaseEndDate;
+    private double monthlyPayment;
 
-
-    public LeaseContract(String date, String customerName, Vehicle vehicleSold, String leaseEndDate) {
-        super(date, customerName, leaseEndDate, vehicleSold);
+    public LeaseContract(String contractDate, String customerName, String customerEmail, Vehicle vehicleSold, int id, int vehicleId, String leaseStartDate, String leaseEndDate, double monthlyPayment) {
+        super(contractDate, customerName, customerEmail, vehicleSold, id, vehicleId);
+        this.leaseStartDate = leaseStartDate;
+        this.leaseEndDate = leaseEndDate;
+        this.monthlyPayment = monthlyPayment;
     }
 
-    public String getLeaseEndDate(){
+    public String getLeaseStartDate() {
+        return leaseStartDate;
+    }
+
+    public void setLeaseStartDate(String leaseStartDate) {
+        this.leaseStartDate = leaseStartDate;
+    }
+
+    public String getLeaseEndDate() {
         return leaseEndDate;
     }
 
-    @Override
-    public double getTotalPrice() {
-        double price = getVehicleSold().getPrice();
-        double endingValue = price * 0.50;
-        double leaseFee = price * 0.07;
-
-        return endingValue + leaseFee;
+    public void setLeaseEndDate(String leaseEndDate) {
+        this.leaseEndDate = leaseEndDate;
     }
 
     public double getMonthlyPayment() {
-        double total = getTotalPrice();
-        double monthlyRate = 0.04 / 12.0;
-        int term = 36;
-        return (total * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+        return monthlyPayment;
+    }
+
+    public void setMonthlyPayment(double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
     }
 }
